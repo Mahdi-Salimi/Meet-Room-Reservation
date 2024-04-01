@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% block content %}
+    <h1>Room {{ review.room.name }}</h1>
+    <p>User: {{ review.user }}</p>
+    <p>Content: {{ review.content }}</p>
+    <p>Rating: {{ review.rating }}</p>
+    <p>Review Time: {{ review.created_at }}</p>
+    <p>
+        <a href="{% url 'rooms:review_update' review.id %}">Update Review</a>
+        <a href="{% url 'rooms:review_delete' review.id %}">Delete Review</a>
+        <a href="{% url 'rooms:reviews'   %}">Review room</a>
+
+    </p>
+
+    <a href="{% url 'rooms:room_statuses' %}">Back</a>
+{% endblock %}

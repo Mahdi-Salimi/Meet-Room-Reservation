@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% block content %}
+    {% if user.is_authenticated %}
+    <p>Welcome, {{ user.username }}</p>
+    {% endif %}
+    <h1>All Rooms</h1>
+    <ul>
+        {% for room in rooms %}
+            {% url 'rooms:room_detail' room.id as room_url %}
+            <li><a href="{{ room_url }}">{{ room.name }}</a></li>
+
+        {% endfor %}
+        <br><br><a href="{% url 'rooms:room_create' %}">Create a new room</a>
+
+    </ul>
+{% endblock %}

@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+{% block content %}
+    <h1>All room reservations</h1>
+    <ul>
+        {% for rs in room_statuses %}
+            {{ rs }}<br>
+
+        {% endfor %}
+    </ul>
+{% endblock %}

@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+{% block content %}
+    <hr>
+    <h1>Room {{ roomstatus.room.name }}</h1>
+    <p>Reserved from {{ roomstatus.start_time }} to {{ roomstatus.end_time }}</p>
+
+    <p>
+        <a href="{% url 'rooms:room_status_update' roomstatus.id %}">Update information</a>
+        <a href="{% url 'rooms:room_status_delete' roomstatus.id %}">Delete reservation</a>
+    </p>
+<hr>
+    <a href="{% url 'rooms:room_statuses' %}">Back</a>
+{% endblock %}

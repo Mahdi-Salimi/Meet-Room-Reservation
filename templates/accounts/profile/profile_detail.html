@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% block content %}
+    <form method="post" style="max-width: 500px; margin: 0 auto;" enctype="multipart/form-data">
+        {% csrf_token %}
+        <table style="width: 100%;">
+            {{ form.as_table }}
+        </table>
+        <div style="margin-top: 20px;">
+            <input type="submit" value="Submit" style="background-color: #4CAF50; color: white; padding: 10px 20px; border: none; cursor: pointer; border-radius: 5px;">
+            <a href="#" style="background-color: #f44336; color: white; padding: 10px 20px; text-decoration: none; border-radius: 5px; margin-left: 10px;">Cancel</a>
+        </div>
+        <div style="color: red; margin-top: 10px;">
+            {{ form.errors }}
+        </div>
+    </form>
+{% endblock %}

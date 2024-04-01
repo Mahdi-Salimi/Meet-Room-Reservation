@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% block content %}
+    {% if user.is_authenticated %}
+    <div style="background-color: #f8f9fa; padding: 20px; border-radius: 10px; margin-bottom: 20px;">
+        <p style="font-size: 18px; color: #333; margin-bottom: 10px;">Welcome Manager, <span style="font-weight: bold; color: #007bff;">{{ user.username }}</span></p>
+    </div>
+    {% endif %}
+    <div style="background-color: #f8f9fa; padding: 20px; border-radius: 10px;">
+        <ul style="list-style: none; padding: 0;">
+            <li style="margin-bottom: 10px;"><a href="{% url 'rooms:rooms_all' %}" style="text-decoration: none; color: #fff; display: block; background: linear-gradient(to right, #007bff, #0056b3); padding: 10px 20px; border-radius: 5px; transition: background 0.3s;">See All Rooms</a></li>
+            <li style="margin-bottom: 10px;"><a href="{% url 'accounts:profile_detail' %}" style="text-decoration: none; color: #fff; display: block; background: linear-gradient(to right, #007bff, #0056b3); padding: 10px 20px; border-radius: 5px; transition: background 0.3s;">Edit Your Profile</a></li>
+            <li style="margin-bottom: 10px;"><a href="{% url 'accounts:team' %}" style="text-decoration: none; color: #fff; display: block; background: linear-gradient(to right, #007bff, #0056b3); padding: 10px 20px; border-radius: 5px; transition: background 0.3s;">See All Teams</a></li>
+            <li><a href="{% url 'reservations:reservations_all' %}" style="text-decoration: none; color: #fff; display: block; background: linear-gradient(to right, #007bff, #0056b3); padding: 10px 20px; border-radius: 5px; transition: background 0.3s;">See All Reservations</a></li><br>
+            <form id="logout-form" action="{% url 'accounts:logout' %}" method="post" style="display: none;">
+                {% csrf_token %}
+            </form>
+            <li>
+                <a href="#" style="text-decoration: none; color: #fff; display: block; background: linear-gradient(to right, #007bff, #0056b3); padding: 10px 20px; border-radius: 5px; transition: background 0.3s;"
+                   onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                    Log Out!
+                </a>
+            </li>
+                    </ul>
+    </div>
+{% endblock %}

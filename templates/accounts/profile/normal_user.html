@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% block content %}
+    {% if user.is_authenticated %}
+    <div style="background-color: #f8f9fa; padding: 20px; border-radius: 10px; margin-bottom: 20px;">
+        <p style="font-size: 18px; color: #333; margin-bottom: 10px;">Welcome, <span style="font-weight: bold; color: #28a745;">{{ user.username }}</span></p>
+    </div>
+    {% endif %}
+    <div style="background-color: #f8f9fa; padding: 20px; border-radius: 10px;">
+        <ul style="list-style: none; padding: 0;">
+            <li style="margin-bottom: 10px;"><a href="{% url 'rooms:room_statuses' %}" style="text-decoration: none; color: #fff; display: block; background: linear-gradient(to right, #28a745, #218838); padding: 10px 20px; border-radius: 5px; transition: background 0.3s;">Your Teams Meetings</a></li>
+            <li style="margin-bottom: 10px;"><a href="{% url 'accounts:profile_detail' %}" style="text-decoration: none; color: #fff; display: block; background: linear-gradient(to right, #218838, #1e7e34); padding: 10px 20px; border-radius: 5px; transition: background 0.3s;">Edit Your Profile</a></li>
+            <li><a href="{% url 'rooms:review_create' %}" style="text-decoration: none; color: #fff; display: block; background: linear-gradient(to right, #1e7e34, #166534); padding: 10px 20px; border-radius: 5px; transition: background 0.3s;">Add Review to a Room</a></li><br>
+            <form id="logout-form" action="{% url 'accounts:logout' %}" method="post" style="display: none;">
+                {% csrf_token %}
+            </form>
+            <li>
+                <a href="#" style="text-decoration: none; color: #fff; display: block; background: linear-gradient(to right, #007bff, #0056b3); padding: 10px 20px; border-radius: 5px; transition: background 0.3s;"
+                   onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                    Log Out!
+                </a>
+            </li>
+        </ul>
+    </div>
+{% endblock %}

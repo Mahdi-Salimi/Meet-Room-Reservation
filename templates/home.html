@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <p>Welcome to the DjangoVille Room Booking System!</p>
+    <p>Here you can book a room for your next event.</p>
+    <p>Create an account, join a team and start booking rooms today!</p>
+
+    {% url 'accounts:login' as login_url %}
+    {% url 'accounts:signup' as signup_url %}
+    {% url 'rooms:rooms' as rooms_url %}
+    <p>
+        <a href="{{ login_url }}">Login</a> or
+        <a href="{{ signup_url }}">Sign up</a> to get started.
+    </p>
+{% endblock %}

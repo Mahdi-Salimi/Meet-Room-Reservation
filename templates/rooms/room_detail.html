@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% block content %}
+    <h1>Room {{ room.name }}</h1>
+    <hr>
+    <p>capacity: {{ room.capacity }}</p>
+    <p>activity status: {{ room.is_active }}</p>
+<hr>
+    <p>
+        <a href="{% url 'rooms:room_update' room.id %}">Update information</a>
+        <a href="{% url 'rooms:room_delete' room.id %}">Delete room</a>
+        <a href="{% url 'reservations:reservation_create' %}?room_id={{ room.id }}">Reserve room</a>
+        <a href="{% url 'rooms:reviews' %}">Review Room</a>
+    </p>
+
+    <a href="{% url 'rooms:rooms' %}">Back</a>
+{% endblock %}

@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% block content %}
+    {% if user.is_authenticated %}
+    <h1>All Review List</h1>
+
+        {% for rs in reviews %}
+            {% url 'rooms:review_detail' rs.id as rs_url %}
+            <li><a href="{{ rs_url }}">{{ rs }}</a></li>
+
+            <!-- If no room reservation is available yet  -->
+            {% empty %}
+            <p>No Review available yet!</p>
+         
+        {% endfor %}
+    <hr>
+
+    <a href="{% url 'rooms:review_create' %}">Create a Review for Room</a>
+
+    {% endif %}
+    {% endblock %}

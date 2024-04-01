@@ -1,0 +1,18 @@
+{%  extends 'base.html' %}
+
+{% block content %}
+    <h3>Welcome {{ user.username }}</h3>
+    <hr>
+    <p>username: {{ user.username }}</p>
+    <p>firstname: {{ user.first_name }}</p>
+    <p>lastname: {{ user.last_name }}</p>
+    <p>email: {{ user.email }}</p>
+    <p>manager: {{ user.is_manager }}</p>
+    <p>image: {{ user.image }}</p>
+    <hr>
+    <a href="{% url 'login_create' %}">Back To Home </a>>
+    <div>{{ message }}</div>
+    
+   
+  
+{% endblock %}
